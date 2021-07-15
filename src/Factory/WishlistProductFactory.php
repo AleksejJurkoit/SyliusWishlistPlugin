@@ -20,13 +20,19 @@ use Sylius\Component\Resource\Factory\FactoryInterface;
 
 final class WishlistProductFactory implements WishlistProductFactoryInterface
 {
-    private FactoryInterface $wishlistProductFactory;
+    /**
+     * @var FactoryInterface
+     */
+    private $wishlistProductFactory;
 
     public function __construct(FactoryInterface $wishlistProductFactory)
     {
         $this->wishlistProductFactory = $wishlistProductFactory;
     }
 
+    /**
+     * @return WishlistProductInterface
+     */
     public function createNew(): WishlistProductInterface
     {
         /** @var WishlistProductInterface $wishlistProduct */
@@ -35,6 +41,12 @@ final class WishlistProductFactory implements WishlistProductFactoryInterface
         return $wishlistProduct;
     }
 
+    /**
+     * @param WishlistInterface $wishlist
+     * @param ProductInterface $product
+     *
+     * @return WishlistProductInterface
+     */
     public function createForWishlistAndProduct(WishlistInterface $wishlist, ProductInterface $product): WishlistProductInterface
     {
         $wishlistProduct = $this->createNew();
@@ -46,6 +58,12 @@ final class WishlistProductFactory implements WishlistProductFactoryInterface
         return $wishlistProduct;
     }
 
+    /**
+     * @param WishlistInterface $wishlist
+     * @param ProductVariantInterface $variant
+     *
+     * @return WishlistProductInterface
+     */
     public function createForWishlistAndVariant(WishlistInterface $wishlist, ProductVariantInterface $variant): WishlistProductInterface
     {
         $wishlistProduct = $this->createNew();

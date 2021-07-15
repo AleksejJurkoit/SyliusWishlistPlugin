@@ -20,12 +20,18 @@ use Sylius\Component\Core\Model\ShopUserInterface;
 
 class Wishlist implements WishlistInterface
 {
-    protected ?int $id = null;
+    /**
+     * @var int|null
+     */
+    protected $id = null;
 
     /** @var Collection|WishlistProductInterface[] */
     protected $wishlistProducts;
 
-    protected ?ShopUserInterface $shopUser = null;
+    /**
+     * @var ShopUserInterface|null
+     */
+    protected $shopUser = null;
 
     /** @var WishlistTokenInterface|null */
     protected $token;
@@ -37,11 +43,17 @@ class Wishlist implements WishlistInterface
         $this->id = null;
     }
 
+    /**
+     * @return int|null
+     */
     public function getId(): ?int
     {
         return $this->id;
     }
 
+    /**
+     * @return Collection
+     */
     public function getProducts(): Collection
     {
         $products = [];
@@ -53,6 +65,9 @@ class Wishlist implements WishlistInterface
         return new ArrayCollection($products);
     }
 
+    /**
+     * @return Collection
+     */
     public function getProductVariants(): Collection
     {
         $variants = [];
@@ -64,6 +79,11 @@ class Wishlist implements WishlistInterface
         return new ArrayCollection($variants);
     }
 
+    /**
+     * @param ProductVariantInterface $productVariant
+     *
+     * @return bool
+     */
     public function hasProductVariant(ProductVariantInterface $productVariant): bool
     {
         foreach ($this->wishlistProducts as $wishlistProduct) {
@@ -75,11 +95,19 @@ class Wishlist implements WishlistInterface
         return false;
     }
 
+    /**
+     * @return Collection
+     */
     public function getWishlistProducts(): Collection
     {
         return $this->wishlistProducts;
     }
 
+    /**
+     * @param ProductInterface $product
+     *
+     * @return bool
+     */
     public function hasProduct(ProductInterface $product): bool
     {
         foreach ($this->wishlistProducts as $wishlistProduct) {
@@ -91,16 +119,27 @@ class Wishlist implements WishlistInterface
         return false;
     }
 
+    /**
+     * @param Collection $wishlistProducts
+     */
     public function setWishlistProducts(Collection $wishlistProducts): void
     {
         $this->wishlistProducts = $wishlistProducts;
     }
 
+    /**
+     * @param WishlistProductInterface $wishlistProduct
+     *
+     * @return bool
+     */
     public function hasWishlistProduct(WishlistProductInterface $wishlistProduct): bool
     {
         return $this->wishlistProducts->contains($wishlistProduct);
     }
 
+    /**
+     * @param WishlistProductInterface $wishlistProduct
+     */
     public function addWishlistProduct(WishlistProductInterface $wishlistProduct): void
     {
         if (!$this->hasProductVariant($wishlistProduct->getVariant())) {
@@ -109,21 +148,33 @@ class Wishlist implements WishlistInterface
         }
     }
 
+    /**
+     * @return ShopUserInterface|null
+     */
     public function getShopUser(): ?ShopUserInterface
     {
         return $this->shopUser;
     }
 
+    /**
+     * @param ShopUserInterface $shopUser
+     */
     public function setShopUser(ShopUserInterface $shopUser): void
     {
         $this->shopUser = $shopUser;
     }
 
+    /**
+     * @return string
+     */
     public function getToken(): string
     {
         return (string) $this->token;
     }
 
+    /**
+     * @param string $token
+     */
     public function setToken(string $token): void
     {
         $this->token = new WishlistToken($token);

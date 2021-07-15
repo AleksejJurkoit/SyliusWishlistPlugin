@@ -18,9 +18,15 @@ use Symfony\Component\Security\Http\Event\InteractiveLoginEvent;
 
 final class ClearCookieWishlistItemsListener
 {
-    private StorageInterface $cookieStorage;
+    /**
+     * @var StorageInterface
+     */
+    private $cookieStorage;
 
-    private string $wishlistCookieToken;
+    /**
+     * @var string
+     */
+    private $wishlistCookieToken;
 
     public function __construct(StorageInterface $cookieStorage, string $wishlistCookieToken)
     {
@@ -28,6 +34,9 @@ final class ClearCookieWishlistItemsListener
         $this->wishlistCookieToken = $wishlistCookieToken;
     }
 
+    /**
+     * @param InteractiveLoginEvent $interactiveLoginEvent
+     */
     public function onInteractiveLogin(InteractiveLoginEvent $interactiveLoginEvent): void
     {
         $user = $interactiveLoginEvent->getAuthenticationToken()->getUser();

@@ -46,6 +46,9 @@ final class MergeUserWishlistItemsListener
         $this->wishlistCookieToken = $wishlistCookieToken;
     }
 
+    /**
+     * @param InteractiveLoginEvent $interactiveLoginEvent
+     */
     public function onInteractiveLogin(InteractiveLoginEvent $interactiveLoginEvent): void
     {
         $user = $interactiveLoginEvent->getAuthenticationToken()->getUser();
@@ -57,6 +60,10 @@ final class MergeUserWishlistItemsListener
         $this->resolveWishlist($interactiveLoginEvent->getRequest(), $user);
     }
 
+    /**
+     * @param Request $request
+     * @param ShopUserInterface $shopUser
+     */
     private function resolveWishlist(Request $request, ShopUserInterface $shopUser): void
     {
         $cookieWishlistToken = $request->cookies->get($this->wishlistCookieToken, '');

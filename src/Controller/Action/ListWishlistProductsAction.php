@@ -23,26 +23,50 @@ use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\Flash\FlashBagInterface;
-use Symfony\Contracts\Translation\TranslatorInterface;
+use Symfony\Component\Translation\TranslatorInterface;
 use Twig\Environment;
 
 final class ListWishlistProductsAction
 {
-    private WishlistContextInterface $wishlistContext;
+    /**
+     * @var WishlistContextInterface
+     */
+    private $wishlistContext;
 
-    private CartContextInterface $cartContext;
+    /**
+     * @var CartContextInterface
+     */
+    private $cartContext;
 
-    private FormFactoryInterface $formFactory;
+    /**
+     * @var FormFactoryInterface
+     */
+    private $formFactory;
 
-    private OrderModifierInterface $orderModifier;
+    /**
+     * @var OrderModifierInterface
+     */
+    private $orderModifier;
 
-    private EntityManagerInterface $cartManager;
+    /**
+     * @var EntityManagerInterface
+     */
+    private $cartManager;
 
-    private FlashBagInterface $flashBag;
+    /**
+     * @var FlashBagInterface
+     */
+    private $flashBag;
 
-    private TranslatorInterface $translator;
+    /**
+     * @var TranslatorInterface
+     */
+    private $translator;
 
-    private Environment $twigEnvironment;
+    /**
+     * @var Environment
+     */
+    private $twigEnvironment;
 
     public function __construct(
         WishlistContextInterface $wishlistContext,

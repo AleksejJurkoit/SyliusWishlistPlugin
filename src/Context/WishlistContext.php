@@ -21,13 +21,25 @@ use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInt
 
 final class WishlistContext implements WishlistContextInterface
 {
-    private TokenStorageInterface $tokenStorage;
+    /**
+     * @var TokenStorageInterface
+     */
+    private $tokenStorage;
 
-    private WishlistRepositoryInterface $wishlistRepository;
+    /**
+     * @var WishlistRepositoryInterface
+     */
+    private $wishlistRepository;
 
-    private WishlistFactoryInterface $wishlistFactory;
+    /**
+     * @var WishlistFactoryInterface
+     */
+    private $wishlistFactory;
 
-    private string $wishlistCookieToken;
+    /**
+     * @var string
+     */
+    private $wishlistCookieToken;
 
     public function __construct(
         TokenStorageInterface $tokenStorage,

@@ -18,13 +18,19 @@ use Sylius\Component\Resource\Factory\FactoryInterface;
 
 final class WishlistFactory implements WishlistFactoryInterface
 {
-    private FactoryInterface $wishlistFactory;
+    /**
+     * @var FactoryInterface
+     */
+    private $wishlistFactory;
 
     public function __construct(FactoryInterface $wishlistFactory)
     {
         $this->wishlistFactory = $wishlistFactory;
     }
 
+    /**
+     * @return WishlistInterface
+     */
     public function createNew(): WishlistInterface
     {
         /** @var WishlistInterface $wishlist */
@@ -33,6 +39,11 @@ final class WishlistFactory implements WishlistFactoryInterface
         return $wishlist;
     }
 
+    /**
+     * @param ShopUserInterface $shopUser
+     *
+     * @return WishlistInterface
+     */
     public function createForUser(ShopUserInterface $shopUser): WishlistInterface
     {
         $wishlist = $this->createNew();

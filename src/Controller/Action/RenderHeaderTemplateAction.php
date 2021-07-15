@@ -19,9 +19,15 @@ use Twig\Environment;
 
 final class RenderHeaderTemplateAction
 {
-    private WishlistContextInterface $wishlistContext;
+    /**
+     * @var WishlistContextInterface
+     */
+    private $wishlistContext;
 
-    private Environment $twigEnvironment;
+    /**
+     * @var Environment
+     */
+    private $twigEnvironment;
 
     public function __construct(WishlistContextInterface $wishlistContext, Environment $twigEnvironment)
     {

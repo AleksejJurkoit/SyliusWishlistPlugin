@@ -18,6 +18,11 @@ use Sylius\Component\Core\Model\ShopUserInterface;
 
 class WishlistRepository extends EntityRepository implements WishlistRepositoryInterface
 {
+    /**
+     * @param ShopUserInterface $shopUser
+     *
+     * @return WishlistInterface|null
+     */
     public function findByShopUser(ShopUserInterface $shopUser): ?WishlistInterface
     {
         return $this->createQueryBuilder('o')
@@ -28,6 +33,11 @@ class WishlistRepository extends EntityRepository implements WishlistRepositoryI
         ;
     }
 
+    /**
+     * @param string $token
+     *
+     * @return WishlistInterface|null
+     */
     public function findByToken(string $token): ?WishlistInterface
     {
         return $this->createQueryBuilder('o')

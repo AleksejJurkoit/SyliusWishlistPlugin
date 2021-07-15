@@ -22,21 +22,39 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\Flash\FlashBagInterface;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
-use Symfony\Contracts\Translation\TranslatorInterface;
+use Symfony\Component\Translation\TranslatorInterface;
 
 final class RemoveProductFromWishlistAction
 {
-    private WishlistContextInterface $wishlistContext;
+    /**
+     * @var WishlistContextInterface
+     */
+    private $wishlistContext;
 
-    private ProductRepositoryInterface $productRepository;
+    /**
+     * @var ProductRepositoryInterface
+     */
+    private $productRepository;
 
-    private EntityManagerInterface $wishlistProductManager;
+    /**
+     * @var EntityManagerInterface
+     */
+    private $wishlistProductManager;
 
-    private FlashBagInterface $flashBag;
+    /**
+     * @var FlashBagInterface
+     */
+    private $flashBag;
 
-    private TranslatorInterface $translator;
+    /**
+     * @var TranslatorInterface
+     */
+    private $translator;
 
-    private UrlGeneratorInterface $urlGenerator;
+    /**
+     * @var UrlGeneratorInterface
+     */
+    private $urlGenerator;
 
     public function __construct(
         WishlistContextInterface $wishlistContext,

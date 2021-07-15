@@ -17,61 +17,103 @@ use Sylius\Component\Core\Model\ProductVariantInterface;
 
 class WishlistProduct implements WishlistProductInterface
 {
-    protected ?int $id;
+    /**
+     * @var int|null
+     */
+    protected $id;
 
-    protected WishlistInterface $wishlist;
+    /**
+     * @var WishlistInterface
+     */
+    protected $wishlist;
 
-    protected ?ProductInterface $product = null;
+    /**
+     * @var ProductInterface|null
+     */
+    protected $product = null;
 
-    protected ?ProductVariantInterface $variant = null;
+    /**
+     * @var ProductVariantInterface|null
+     */
+    protected $variant = null;
 
-    protected int $quantity = 0;
+    /**
+     * @var int
+     */
+    protected $quantity = 0;
 
     public function __construct()
     {
         $this->id = null;
     }
 
+    /**
+     * @return int|null
+     */
     public function getId(): ?int
     {
         return $this->id;
     }
 
+    /**
+     * @return WishlistInterface
+     */
     public function getWishlist(): WishlistInterface
     {
         return $this->wishlist;
     }
 
+    /**
+     * @param WishlistInterface $wishlist
+     */
     public function setWishlist(WishlistInterface $wishlist): void
     {
         $this->wishlist = $wishlist;
     }
 
+    /**
+     * @return ProductInterface
+     */
     public function getProduct(): ProductInterface
     {
         return $this->product;
     }
 
+    /**
+     * @param ProductInterface $product
+     */
     public function setProduct(ProductInterface $product): void
     {
         $this->product = $product;
     }
 
+    /**
+     * @return ProductVariantInterface|null
+     */
     public function getVariant(): ?ProductVariantInterface
     {
         return $this->variant;
     }
 
+    /**
+     * @param ProductVariantInterface|null $variant
+     */
     public function setVariant(?ProductVariantInterface $variant): void
     {
         $this->variant = $variant;
     }
 
+    /**
+     * @return int
+     */
     public function getQuantity(): int
     {
         return $this->quantity;
     }
 
+    /**
+     * @param int $quantity
+     */
     public function setQuantity(int $quantity): void
     {
         $this->quantity = $quantity;

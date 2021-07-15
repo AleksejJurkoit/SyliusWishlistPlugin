@@ -27,27 +27,54 @@ use Symfony\Component\HttpFoundation\Session\Flash\FlashBagInterface;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
-use Symfony\Contracts\Translation\TranslatorInterface;
+use Symfony\Component\Translation\TranslatorInterface;
 
 final class AddProductToWishlistAction
 {
-    private TokenStorageInterface $tokenStorage;
+    /**
+     * @var TokenStorageInterface
+     */
+    private $tokenStorage;
 
-    private ProductRepositoryInterface $productRepository;
+    /**
+     * @var ProductRepositoryInterface
+     */
+    private $productRepository;
 
-    private WishlistContextInterface $wishlistContext;
+    /**
+     * @var WishlistContextInterface
+     */
+    private $wishlistContext;
 
-    private WishlistProductFactoryInterface $wishlistProductFactory;
+    /**
+     * @var WishlistProductFactoryInterface
+     */
+    private $wishlistProductFactory;
 
-    private ObjectManager $wishlistManager;
+    /**
+     * @var ObjectManager
+     */
+    private $wishlistManager;
 
-    private FlashBagInterface $flashBag;
+    /**
+     * @var FlashBagInterface
+     */
+    private $flashBag;
 
-    private TranslatorInterface $translator;
+    /**
+     * @var TranslatorInterface
+     */
+    private $translator;
 
-    private UrlGeneratorInterface $urlGenerator;
+    /**
+     * @var UrlGeneratorInterface
+     */
+    private $urlGenerator;
 
-    private string $wishlistCookieToken;
+    /**
+     * @var string
+     */
+    private $wishlistCookieToken;
 
     public function __construct(
         TokenStorageInterface $tokenStorage,
